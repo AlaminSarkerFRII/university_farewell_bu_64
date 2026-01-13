@@ -1,0 +1,38 @@
+# Environment
+venv/
+env/
+.venv
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Django
+db.sqlite3
+*.sqlite3
+/media/
+/staticfiles/
+.env
+.env.local
+
+# Frontend
+node_modules/
+npm-debug.log
+yarn-error.log
+build/
+dist/
+.next/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
