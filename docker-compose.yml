@@ -6,7 +6,7 @@ services:
     image: postgres:15-alpine
     container_name: farewell_db
     environment:
-      POSTGRES_DB: versity_farewell
+      POSTGRES_DB: farewell_user
       POSTGRES_USER: farewell_user
       POSTGRES_PASSWORD: farewell_password_local
       POSTGRES_INITDB_ARGS: "--encoding=UTF8"
@@ -49,7 +49,7 @@ services:
     environment:
       DEBUG: "True"
       SECRET_KEY: "django-insecure-local-dev-key-change-in-production"
-      DATABASE_URL: "postgresql://farewell_user:farewell_password_local@db:5432/versity_farewell"
+      DATABASE_URL: "postgresql://farewell_user:farewell_password_local@db:5432/farewell_user"
       REDIS_URL: "redis://redis:6379/0"
       ALLOWED_HOSTS: "localhost,127.0.0.1,backend"
       CORS_ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173"
