@@ -12,6 +12,11 @@ class CustomUserAdmin(BaseUserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('-created_at',)
     
+    # Support email-based login
+    authentication_error_messages = {
+        'invalid_login': 'Please enter the correct email and password for a staff account.',
+    }
+    
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal Info', {'fields': ('first_name', 'last_name', 'profile_picture', 'bio')}),

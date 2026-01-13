@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "15432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U farewell_user"]
       interval: 10s
@@ -77,7 +77,7 @@ services:
       - static_volume:/app/backend/staticfiles:ro
       - media_volume:/app/backend/media:ro
     ports:
-      - "80:80"
+      - "90:80"
     depends_on:
       - backend
     networks:

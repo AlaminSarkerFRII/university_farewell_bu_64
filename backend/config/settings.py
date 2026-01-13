@@ -27,7 +27,17 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-cj-v)twa&w9z81u%&n8#v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,0.0.0.0', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS =[
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    '0.0.0.0:8000',
+    'localhost:8000',
+    'localhost:3000',
+    'localhost:5173',
+]
+
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,0.0.0.0 , 0.0.0.0:8000', cast=lambda v: [s.strip() for s in v.split(',')])
 DOMAIN = config('DOMAIN', default='localhost:8000')
 
 
@@ -100,6 +110,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
 }
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = config(
