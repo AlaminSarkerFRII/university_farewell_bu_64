@@ -1,6 +1,12 @@
-# Farewell Event Management System - Complete Documentation
+# 🎓 Versity Farewell Platform
 
-A comprehensive, role-based farewell event management platform for university students. Built with React, Django REST Framework, and PostgreSQL following SOLID and DRY principles.
+> A comprehensive event management and responsibility tracking platform for university farewell events
+
+[![GitHub](https://img.shields.io/badge/GitHub-AlaminSarkerFRII%2Funiversity_farewell_bu_64-blue)](https://github.com/AlaminSarkerFRII/university_farewell_bu_64)
+[![Django](https://img.shields.io/badge/Django-4.2.8%20LTS-green)](https://www.djangoproject.com/)
+[![DRF](https://img.shields.io/badge/DRF-3.14.0-red)](https://www.django-rest-framework.org/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ## 📋 Documentation Index
 
