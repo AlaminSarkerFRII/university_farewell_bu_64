@@ -92,8 +92,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password')
         user = CustomUser.objects.create_user(**validated_data, password=password)
         
-        # Create user profile
-        UserProfile.objects.create(user=user)
+        # UserProfile is automatically created by the post_save signal
+        # No need to create it explicitly here
         
         # Generate email verification token
         token = str(uuid.uuid4())

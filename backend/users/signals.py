@@ -7,11 +7,5 @@ from .models import CustomUser, UserProfile
 def create_user_profile(sender, instance, created, **kwargs):
     """Create a UserProfile when a CustomUser is created."""
     if created:
+        # Use get_or_create to avoid duplicate profile creation
         UserProfile.objects.get_or_create(user=instance)
-
-
-@receiver(post_save, sender=CustomUser)
-def save_user_profile(sender, instance, **kwargs):
-    """Save UserProfile when CustomUser is saved."""
-    if hasattr(instance, 'profile'):
-        instance.profile.save()

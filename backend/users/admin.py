@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import CustomUser, UserProfile, EmailVerificationToken, Role
 
 
+# Register with default admin site
 @admin.register(CustomUser)
 class CustomUserAdmin(BaseUserAdmin):
     """Admin configuration for CustomUser."""
@@ -12,10 +13,8 @@ class CustomUserAdmin(BaseUserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('-created_at',)
     
-    # Support email-based login
-    authentication_error_messages = {
-        'invalid_login': 'Please enter the correct email and password for a staff account.',
-    }
+    # Use email instead of username for authentication
+    username_field = 'email'
     
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
