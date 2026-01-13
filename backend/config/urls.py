@@ -5,12 +5,13 @@ The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
-from users.viewsets import AuthViewSet, UserViewSet, UserProfileViewSet
-from timeline.viewsets import TimelineViewSet, TimelineEventViewSet
-from responsibilities.viewsets import ResponsibilityViewSet, ResponsibilityCategoryViewSet
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+from users.views import AuthViewSet, UserViewSet, UserProfileViewSet
+from timeline.views import TimelineViewSet, TimelineEventViewSet
+from responsibilities.views import ResponsibilityViewSet, ResponsibilityCategoryViewSet
 
 # Create router and register viewsets
 router = DefaultRouter()
@@ -30,4 +31,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/', include(auth_router.urls)),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # Swagger/OpenAPI Documentation
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]

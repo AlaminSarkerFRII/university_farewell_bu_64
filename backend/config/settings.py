@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_filters',
+    'drf_spectacular',
     
     # Local apps
     'users.apps.UsersConfig',
@@ -115,6 +116,16 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# DRF Spectacular Settings for Swagger/OpenAPI
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Versity Farewell API',
+    'DESCRIPTION': 'REST API for Event Management and Responsibility Tracking',
+    'VERSION': '1.0.0',
+    'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
+    'SERVE_AUTHENTICATION': None,
 }
 
 # Authentication Backends
