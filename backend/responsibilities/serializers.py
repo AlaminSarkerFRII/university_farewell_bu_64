@@ -9,8 +9,8 @@ class ResponsibilityCategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ResponsibilityCategory
-        fields = ['id', 'name', 'description', 'created_at']
-        read_only_fields = ['id', 'created_at']
+        fields = ['id', 'name', 'description', 'color']
+        read_only_fields = ['id']
 
 
 class ResponsibilitySerializer(serializers.ModelSerializer):
