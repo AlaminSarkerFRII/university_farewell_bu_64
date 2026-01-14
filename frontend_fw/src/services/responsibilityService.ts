@@ -7,7 +7,8 @@ export const responsibilityApi = {
   getResponsibilities: async (filters?: Record<string, string>): Promise<Responsibility[]> => {
     const params = new URLSearchParams(filters);
     const { data } = await axiosInstance.get(`/responsibilities/?${params}`);
-    return data;
+    // Handle paginated response
+    return data.results || data;
   },
 
   getResponsibility: async (id: number): Promise<Responsibility> => {
@@ -57,7 +58,8 @@ export const responsibilityApi = {
   // Categories
   getCategories: async (): Promise<ResponsibilityCategory[]> => {
     const { data } = await axiosInstance.get('/responsibility-categories/');
-    return data;
+    // Handle paginated response
+    return data.results || data;
   },
 
   createCategory: async (category: Partial<ResponsibilityCategory>): Promise<ResponsibilityCategory> => {

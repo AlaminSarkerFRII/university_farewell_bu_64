@@ -48,7 +48,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
     
     def get_full_name(self, obj):
         """Get user's full name."""
-        return obj.get_full_name()
+        first_name = obj.first_name or ""
+        last_name = obj.last_name or ""
+        return f"{first_name} {last_name}".strip()
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):

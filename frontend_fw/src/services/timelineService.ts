@@ -7,7 +7,7 @@ export const timelineApi = {
   getTimelines: async (filters?: Record<string, string>): Promise<Timeline[]> => {
     const params = new URLSearchParams(filters);
     const { data } = await axiosInstance.get(`/timelines/?${params}`);
-    return data;
+    return data.results || [];
   },
 
   getTimeline: async (id: number): Promise<Timeline> => {

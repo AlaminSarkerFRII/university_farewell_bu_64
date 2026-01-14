@@ -16,7 +16,9 @@ axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('access_token');
     if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
+      // Ensure Bearer prefix is only added once
+      const bearerToken = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+      config.headers.Authorization = bearerToken;
     }
     return config;
   },
@@ -44,9 +46,11 @@ axiosInstance.interceptors.response.use(
           
           const { access } = response.data;
           localStorage.setItem('access_token', access);
-          
+
           if (originalRequest.headers) {
-            originalRequest.headers.Authorization = `Bearer ${access}`;
+            // Ensure Bearer prefix is only added once
+            const bearerToken = access.startsWith('Bearer ') ? access : `Bearer ${access}`;
+            originalRequest.headers.Authorization = bearerToken;
           }
           
           return axiosInstance(originalRequest);

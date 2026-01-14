@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import CustomUser, UserProfile, EmailVerificationToken, Role
 
 
-# Register with default admin site
+# Register with admin site
 @admin.register(CustomUser)
 class CustomUserAdmin(BaseUserAdmin):
     """Admin configuration for CustomUser."""

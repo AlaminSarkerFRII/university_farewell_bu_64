@@ -31,7 +31,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/', include(auth_router.urls)),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
+
     # Swagger/OpenAPI Documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
