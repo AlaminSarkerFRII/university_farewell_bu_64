@@ -1,22 +1,14 @@
-FROM node:20-alpine
+FROM node:20-alpine as build
 
 WORKDIR /app
-
-# Copy package files
 COPY package*.json yarn.lock ./
-
-# Install dependencies
 RUN yarn install --frozen-lockfile
-
-# Copy source code
 COPY . .
+RUN yarn build
 
-# Copy entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Expose port
-EXPOSE 5173
-
-# Set entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
+# Final stage: serve static files with Nginx
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
